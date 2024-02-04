@@ -1,6 +1,9 @@
+import 'package:examplebloc/layout/addnews.dart';
+import 'package:examplebloc/layout/managenews.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/login_bloc.dart';
+import 'addnews.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final String sessionToken;
@@ -23,6 +26,25 @@ class WelcomeScreen extends StatelessWidget {
                 context.read<LoginBloc>().add(const ProsesLogout());
               },
               child: Text('Logout'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //Navigasi ke halaman Add News
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewsForm()),
+                );
+              },
+              child: Text('Tambah Berita'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ManageNews()),
+                );
+              },
+              child: Text('Kelola Berita'),
             ),
           ],
         ),
